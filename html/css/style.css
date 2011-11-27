@@ -1,8 +1,10 @@
+body { 
+       background-color: #56514c;
+}
+
 td {
     padding: 0;
 }
 table {
     border-spacing: 0;
-    border: 2;
-    border-color: red;
 }
