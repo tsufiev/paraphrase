@@ -1,11 +1,14 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.shortcuts import render_to_response
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+      url(r'^$', lambda request : render_to_response('home.html') ),
     # Examples:
+                           
     # url(r'^$', 'paraphrase.views.home', name='home'),
     # url(r'^paraphrase/', include('paraphrase.foo.urls')),
 
