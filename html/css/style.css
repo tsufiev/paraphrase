@@ -1,5 +1,5 @@
 body { 
-       background-color: #56514c;
+       background: #56514c;
 }
 
 td {
@@ -9,6 +9,6 @@ table {
         border-spacing: 0;
 }
 
-a img { 
-        border: 0;
+a:active, a:focus { 
+    color: transparent;
 }
