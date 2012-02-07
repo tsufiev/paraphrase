@@ -1,0 +1,10 @@
+td {
+     padding: 0;
+}
+table {
+        border-spacing: 0;
+}
+
+a:active, a:focus { 
+    color: transparent;
+}
