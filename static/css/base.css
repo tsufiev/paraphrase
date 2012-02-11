@@ -1,4 +1,15 @@
-body { 
-       background: #56514c;
+body
+{ 
+  background: #56514c;
 }
 
+.menu table, .content table
+{ 
+  border-spacing: 0;
+}
+
+.menu td, .content td { padding: 0 }
+
+a:active, a:focus { 
+    color: transparent;
+}

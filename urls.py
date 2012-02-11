@@ -1,15 +1,13 @@
 from django.conf.urls.defaults import patterns, include, url
-import paraphrase.views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+from paraphrase.views import show_section, sections
 urlpatterns = patterns('',
-    url(r'^$', paraphrase.views.home),
-    url(r'^actors$', paraphrase.views.actors),
     # Examples:
-    # url(r'^$', 'paraphrase.views.home', name='home'),
+    (r'^$', show_section),
     # url(r'^paraphrase/', include('paraphrase.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -19,6 +17,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^photologue/', include('photologue.urls')),       
 )
+
+for section in sections:
+    urlpatterns += patterns('', ('^(' + section + ')$', show_section))
 
 from django.conf import settings
 if settings.DEBUG:

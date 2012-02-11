@@ -4,8 +4,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
-    {% block css %}{% endblock %}
-    {% block js %}{% endblock %}
+    <script type="text/javascript" src="/static/js/rollover.js"></script>
   </head>
-  <body>{% block content %}{% endblock %}</body>
+  <body>
+    <div align="center">
+      <div class="menu">
+        <table>
+          <tr>
+            {% for section in sections %}
+            <td><a href="/{{section}}">
+                <img src="/static/img/menu/
+{% if current_section == section %}
+active
+{% else %}
+normal
+{% endif %}/{{section}}.gif"
+                     rollover="/static/img/menu/focus/{{section}}.gif"/></a>
+            </td>
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+      <div class="content">{% block content %}{% endblock %}</div>
+      <div class="footer"></div>
+    </div>
+  </body>
 </html>
