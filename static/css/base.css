@@ -1,15 +1,50 @@
 body
 { 
-  background: #56514c;
+  background:  #34251e /* #56514c; */
 }
 
-.menu table, .content table
+.menu table, .main table
 { 
   border-spacing: 0;
 }
 
-.menu td, .content td { padding: 0 }
+.menu td, .main td { padding: 0 }
 
-a:active, a:focus { 
-    color: transparent;
+a:active, a:focus 
+{ 
+  color: transparent;
 }
+
+div.menu, div.main, div.footer { width: 1024px }
+
+div.content-wrapper
+{ 
+  background: url("/static/img/content.png") no-repeat;
+  height: 641px;
+}
+
+div.content
+{  
+  padding: 100px 15% 0 15%;
+  }
+
+div.content#actors
+{ background: url("/static/img/labels/actors.png") no-repeat; }
+
+div.content#theory
+{ background: url("/static/img/labels/theory.png") no-repeat; }
+
+div.content#feedback
+{ background: url("/static/img/labels/feedback.png") no-repeat; }
+
+div.content#contacts
+{ background: url("/static/img/labels/contacts.png") no-repeat; }
+
+div.content#photo
+{ background: url("/static/img/labels/photo.png") no-repeat; }
+
+div.content#video
+{ background: url("/static/img/labels/photo.png") no-repeat; }
+
+div.content#upcoming
+{ background: url("/static/img/labels/upcoming.png") no-repeat; }
