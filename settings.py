@@ -126,8 +126,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.markup',
     'django.contrib.webdesign',
-    'photologue',
-    'tagging',
+#    'photologue',
+#    'tagging',
 #    'paraphrase.articles',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
