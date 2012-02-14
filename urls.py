@@ -4,7 +4,8 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from paraphrase.views import show_section, sections
+from paraphrase.views import show_section
+from paraphrase.sections import sections
 urlpatterns = patterns('',
     # Examples:
     (r'^$', show_section),
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
 )
 
 for section in sections:
-    urlpatterns += patterns('', ('^(' + section + ')$', show_section))
+    urlpatterns += patterns('', ('^(' + section['id'] + ')$', show_section))
 
 from django.conf import settings
 if settings.DEBUG:

@@ -1,10 +1,12 @@
 from django.shortcuts import render_to_response, redirect
+from paraphrase.articles.models import Article
 
-sections = ['home', 'theory', 'upcoming', 'actors', 'contacts', 'photo', 
-            'video', 'feedback']
-
+from paraphrase.sections import sections, titles
 def show_section(request, section = 'home'):
-    context = {'sections': sections, 'current_section': section}
+    context = {'sections': sections,
+               'title': titles[section],
+               'current_section': section,
+               'articles': Article.objects.filter(section=section)}
     return render_to_response('%s.html' % section, context)
 
 def home(request):

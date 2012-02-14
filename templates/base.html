@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
     <script type="text/javascript" src="/static/js/rollover.js"></script>
   </head>
@@ -12,14 +12,14 @@
         <table>
           <tr>
             {% for section in sections %}
-            <td><a href="/{{section}}">
+            <td><a href="/{{section.id}}">
                 <img src="/static/img/menu/
-{% if current_section == section %}
+{% if current_section == section.id %}
 active
 {% else %}
 normal
-{% endif %}/{{section}}.gif"
-                     rollover="/static/img/menu/focus/{{section}}.gif"/></a>
+{% endif %}/{{section.id}}.gif"
+                     rollover="/static/img/menu/focus/{{section.id}}.gif"/></a>
             </td>
             {% endfor %}
           </tr>

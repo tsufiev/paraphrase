@@ -1,6 +1,9 @@
 {% extends "content.html" %}
 {% load webdesign %}
-{% block title %}О плейбек театре{% endblock %}
+{% load markup %}
 {% block content %}
-{% lorem 10 %}
+{% for article in articles %}
+<h1>{{ article.title }}</h1>
+{{ article.text|textile }}
+{% endfor %}
 {% endblock %}
