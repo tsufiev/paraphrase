@@ -1,0 +1,8 @@
+{% extends "content.html" %}
+{% load markup %}
+{% block content %}
+<div class="actor">
+  <img src="{{ actor.get_big_portrait_url }}"/>
+  {{ actor.caption|textile }}
+</div>
+{% endblock %}

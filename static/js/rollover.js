@@ -39,7 +39,8 @@ function init_rollovers() {
         var href = links[i].href;
         if ( href ) {
             var child = links[i].children[0];
-            if ( child && child.tagName.toLowerCase() == "img" ) {
+            if ( child && child.tagName.toLowerCase() == "img" &&
+                 child.getAttribute("rollover") ) {
                 if ( objs[href] )
                     objs[href].push(child);
                 else

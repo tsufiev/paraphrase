@@ -17,7 +17,7 @@ a:active, a:focus
 
 div.menu, div.main, div.footer { width: 1024px }
 
-div.content-wrapper
+div.main
 { 
   background: url("/static/img/content.png") no-repeat;
   height: 641px;
@@ -25,26 +25,8 @@ div.content-wrapper
 
 div.content
 {  
-  padding: 100px 15% 0 15%;
+  margin: 40px 150px;
+  border: 1px yellow solid;
+  overflow: hidden;
   }
 
-div.content#actors
-{ background: url("/static/img/labels/actors.png") no-repeat; }
-
-div.content#theory
-{ background: url("/static/img/labels/theory.png") no-repeat; }
-
-div.content#feedback
-{ background: url("/static/img/labels/feedback.png") no-repeat; }
-
-div.content#contacts
-{ background: url("/static/img/labels/contacts.png") no-repeat; }
-
-div.content#photo
-{ background: url("/static/img/labels/photo.png") no-repeat; }
-
-div.content#video
-{ background: url("/static/img/labels/photo.png") no-repeat; }
-
-div.content#upcoming
-{ background: url("/static/img/labels/upcoming.png") no-repeat; }

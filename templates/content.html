@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="content-wrapper">
-  <div class="content" id="{{current_section}}">
-    {% block content %}{% endblock %}
-  </div>
+<div class="label">
+  <img src="/static/img/labels/{{current_section}}.png"/>
+</div>
+<div class="content">
+  {% block content %}{% endblock %}
 </div>
 {% endblock %}

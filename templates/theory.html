@@ -1,9 +1,4 @@
-{% extends "content.html" %}
-{% load webdesign %}
-{% load markup %}
-{% block content %}
-{% for article in articles %}
-<h1>{{ article.title }}</h1>
-{{ article.text|textile }}
-{% endfor %}
+{% extends "articles.html" %}
+{% block no_article %}
+<h3>К сожалению, пока нет ни одной статьи</h3>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends "content.html" %}
+{% load markup %}
+{% block content %}
+<div class="articles">
+  {% for article in articles %}
+  <h1>{{ article.title }}</h1>
+  {{ article.text|textile }}
+  {% empty %}
+  {% block no_article %}{% endblock %}
+  {% endfor %}
+</div>
+{% endblock %}

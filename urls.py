@@ -4,11 +4,12 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from paraphrase.views import show_section
+from paraphrase.views import show_section, show_actor
 from paraphrase.sections import sections
 urlpatterns = patterns('',
     # Examples:
     (r'^$', show_section),
+    (r'^actors/(.*)$', show_actor),
     # url(r'^paraphrase/', include('paraphrase.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

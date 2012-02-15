@@ -1,22 +1,22 @@
 from django.shortcuts import render_to_response, redirect
 from paraphrase.articles.models import Article
+from photologue.models import Photo, Gallery
 
-from paraphrase.sections import sections, titles
+from paraphrase.sections import sections, titles, mappings
 def show_section(request, section = 'home'):
     context = {'sections': sections,
                'title': titles[section],
                'current_section': section,
-               'articles': Article.objects.filter(section=section)}
+               'articles': Article.objects.filter(section=section),
+               'actors': Gallery.objects.get(title_slug='actors').photos.all()}
     return render_to_response('%s.html' % section, context)
 
-def home(request):
-    return render_to_response('home.html')
-
-def actors(request):
-    return redirect('/photologue/gallery/actors')
-
-# sections = ['home', 'theory', 'upcoming', 'actors', 'contacts', 'photo', 
-#             'video', 'feedback']
+def show_actor(request, actor):
+    context = {'sections': sections,
+               'title': titles['actors'],
+               'current_section': 'actors',
+               'actor': Photo.objects.get(title_slug=actor)}
+    return render_to_response('actor.html', context)
 
 # from os.path import basename
 # import re
