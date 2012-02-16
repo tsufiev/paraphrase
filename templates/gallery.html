@@ -1,0 +1,14 @@
+{% extends "content.html" %}
+{% block content %}
+{% if photos %}
+{% for photo in photos %}
+  <div class="actors">
+    <a href="{{gallery}}/{{photo.id}}">
+      <img class="actors" src="{{ photo.get_thumbnail_url }}"/>
+    </a>
+  </div>
+{% endfor %}
+{% else %}
+  <img src="{{ photo.get_display_url }}"/>
+{% endif %}
+{% endblock %}

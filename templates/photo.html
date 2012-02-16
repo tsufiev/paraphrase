@@ -1,4 +1,13 @@
 {% extends "content.html" %}
 {% block content %}
+{% for gallery in galleries %}
+  <div class="actors">
+    <a href="photo/{{gallery.title_slug}}">
+      <!-- <img class="actors" src="{{ actor.get_small_portrait_url
+      }}"/> -->
+      {{ gallery.title }}
+    </a>
+  </div>
+{% endfor %}
 {% endblock %}
 
