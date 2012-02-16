@@ -48,7 +48,10 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/timur/develop/web/paraphrase/media/'
+if DEBUG:
+    MEDIA_ROOT = '/home/timur/develop/web/paraphrase/media/'
+else:
+    MEDIA_ROOT = '/srv/paraphrase/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -106,13 +109,21 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'paraphrase.urls'
 
-TEMPLATE_DIRS = (
-    '/home/timur/develop/web/paraphrase/templates',
-    '/home/dev/web/paraphrase/templates',
+if DEBUG:
+    TEMPLATE_DIRS = (
+        '/home/timur/develop/web/paraphrase/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-)
+        )
+else:
+    TEMPLATE_DIRS = (
+        '/home/dev/web/paraphrase/templates',
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+        )
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
