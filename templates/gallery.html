@@ -4,7 +4,7 @@
 {% for photo in photos %}
   <div class="actors">
     <a href="{{gallery}}/{{photo.id}}">
-      <img class="actors" src="{{ photo.get_thumbnail_url }}"/>
+      <img class="actors" src="{{ photo.get_small_portrait_url }}"/>
     </a>
   </div>
 {% endfor %}

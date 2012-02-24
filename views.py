@@ -4,11 +4,16 @@ from photologue.models import Photo, Gallery
 
 from paraphrase.sections import sections, titles, mappings
 def show_section(request, section = 'home'):
+    gallery = Gallery.objects.filter(title_slug='actors')
+    if len(gallery) == 1:
+        actors = gallery[0].photos.all()
+    else:
+        actors = []
     context = {'sections': sections,
                'title': titles[section],
                'current_section': section,
                'articles': Article.objects.filter(section=section),
-               'actors': Gallery.objects.get(title_slug='actors').photos.all(),
+               'actors': actors,
                'galleries': Gallery.objects.all()
                }
     return render_to_response('%s.html' % section, context)
