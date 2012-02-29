@@ -1,14 +1,27 @@
 {% extends "content.html" %}
+{% load photologue_tags %}
 {% block content %}
-{% if photos %}
-{% for photo in photos %}
+{% if objects %}
+{% for object in objects %}
   <div class="actors">
-    <a href="{{gallery}}/{{photo.id}}">
-      <img class="actors" src="{{ photo.get_small_portrait_url }}"/>
+    {% if object.sample %}
+    <a href="{% url gallery object.title_slug %}">
+      <img class="actors" src="{{ object.sample.0.get_small_portrait_url }}"/>
+      {% else %}
+    <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
+      <img class="actors" src="{{ object.get_small_portrait_url }}"/>
+      {% endif %}
     </a>
+    <p class="actors">{{ object.title }}</p>
   </div>
-{% endfor %}
+{% endfor%}
 {% else %}
   <img src="{{ photo.get_display_url }}"/>
+  {% for gallery in photo.public_galleries %}
+  {% previous_in_gallery photo gallery %} <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a> {%next_in_gallery photo gallery%}
+    {% endfor %}
 {% endif %}
 {% endblock %}
+
+
+

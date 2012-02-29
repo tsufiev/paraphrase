@@ -1,14 +1,13 @@
 {% extends "content.html" %}
 {% block content %}
-{% for gallery in galleries %}
-{% if gallery.title_slug != "actors" %}
-  <div class="actors">
-    <a href="photo/{{gallery.title_slug}}">
-      <img class="actors" src="{{ gallery.sample.0.get_small_portrait_url }}"/>
-    </a>
-    <p class="actors">{{ gallery.title }}</p>
-  </div>
+<div class="actors">
+  {% if actor %}
+  <img class="actors" src="{{ actor.get_small_portrait_url }}"/>
+  <p class="actors">Это актер</p>
+  {% else %}
+  <img class="actors" src="{{ photo.get_small_portrait_url }}"/>
+  <p class="actors">Это обычная фотка</p>
   {% endif %}
-{% endfor %}
+</div>
 {% endblock %}
 

@@ -19,7 +19,7 @@ sections = [
     {'id':     'contacts',
      'title': u'Контакты',
      'has_feed': True},
-    {'id':     'photo',
+    {'id':     'photos',
      'title': u'Фотографии с перфомансов',
      'has_feed': False},
     {'id':     'video',
@@ -29,7 +29,6 @@ sections = [
      'title': u'Отзывы',
      'has_feed': True}]
 
-mappings = {'actor': 'actors'}
 titles = dict([(entry['id'], entry['title']) for entry in sections])
 text_sections = tuple([(section['id'], section['title'])
                        for section in sections if section['has_feed']])
