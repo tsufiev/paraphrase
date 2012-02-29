@@ -1,5 +1,4 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
 from photologue.models import Photo, Gallery
@@ -25,24 +24,19 @@ def show_section(request, section = 'home', template = None, context = {}):
                     }.items() + context.items())
     return render_to_response(template or '%s.html'%section, context)
 
-def show_photo(request, gallery, actor = None, photo = None):
-    if actor:
-        actor = get_object_or_404(Photo, title_slug=actor)
-        return show_section(request, 'actors', 'photo.html', {'actor': actor})
-    elif photo:
-        photo = get_object_or_404(Photo, title_slug=photo)
-        return show_section(request, 'photos', 'photo.html', {'photo': photo})
+def show_photo(request, photo, gallery = 'actors'):
+    if gallery == 'actors':
+        section = 'actors'
     else:
-        raise Http404
+        section = 'photos'
+    return show_section(request, section, 'photo.html', 
+                        {'photo': get_object_or_404(Photo, title_slug=photo)})
 
 from django.http import HttpResponse
     
 def show_gallery(request, slug = 'actors', page = None):
     if slug:
-        try:
-            gallery = Gallery.objects.get(title_slug=slug)
-        except ObjectDoesNotExist:
-            raise Http404
+        gallery = get_object_or_404(Gallery, title_slug=slug)
         photos = gallery.photos.all()
         if slug != 'actors':
             photos = photos.order_by('id')

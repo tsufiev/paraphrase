@@ -7,10 +7,14 @@
     {% if object.sample %}
     <a href="{% url gallery object.title_slug %}">
       <img class="actors" src="{{ object.sample.0.get_small_portrait_url }}"/>
+    {% else %}
+      {% if current_gallery == "actors" %}
+      <a href="{% url actor object.title_slug %}">
       {% else %}
-    <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
-      <img class="actors" src="{{ object.get_small_portrait_url }}"/>
+      <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
       {% endif %}
+      <img class="actors" src="{{ object.get_small_portrait_url }}"/>
+    {% endif %}
     </a>
     <p class="actors">{{ object.title }}</p>
   </div>

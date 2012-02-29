@@ -13,7 +13,7 @@ from django.shortcuts import redirect
 urlpatterns = patterns('',
     url(r'^$', show_section),
     url(r'^actors/$', show_gallery),
-    url(r'^actors/(?P<actor>[\-\d\w]+)/$', show_photo),
+    url(r'^actors/(?P<photo>[\-\d\w]+)/$', show_photo, name='actor'),
     url(r'^photos/$', show_gallery, {'slug': None, 'page': '1'}),
     url(r'^photos/page/(?P<page>\d+)/$', show_gallery, {'slug': None}),
     url(r'^photos/gallery/(?P<slug>[\-\d\w]+)/$', show_gallery, {'page': '1'}, name='gallery'),
