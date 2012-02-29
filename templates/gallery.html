@@ -1,7 +1,6 @@
 {% extends "content.html" %}
 {% load photologue_tags %}
 {% block content %}
-{% if objects %}
 {% for object in objects %}
   <div class="actors">
     {% if object.sample %}
@@ -19,13 +18,17 @@
     <p class="actors">{{ object.title }}</p>
   </div>
 {% endfor%}
+{% if current_page %}
+<p>
+{% if object.sample %}
+{% if previous_page %}<a href="{% url page previous_page %}">Назад</a>{% endif %}
+Страница {{ current_page }} из {{ pages }} [галереи]
+{% if next_page %}<a href="{% url page next_page %}">Вперед</a>{% endif %}
 {% else %}
-  <img src="{{ photo.get_display_url }}"/>
-  {% for gallery in photo.public_galleries %}
-  {% previous_in_gallery photo gallery %} <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a> {%next_in_gallery photo gallery%}
-    {% endfor %}
+{% if previous_page %}<a href="{% url gallery_page slug=current_gallery page=previous_page %}">Назад</a>{% endif %}
+Страница {{ current_page }} из {{ pages }}
+{% if next_page %}<a href="{% url gallery_page slug=current_gallery page=next_page %}">Вперед</a>{% endif %}
+{% endif %}
+</p>
 {% endif %}
 {% endblock %}
-
-
-

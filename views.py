@@ -6,8 +6,10 @@ from photologue.models import Photo, Gallery
 from paraphrase.sections import sections, titles
 from paraphrase.articles.models import Article
 
+OBJS_PER_PAGE = 6
+
 from math import ceil
-def paginate_queryset(queryset, page, objs_per_page = 18):
+def paginate_queryset(queryset, page, objs_per_page = OBJS_PER_PAGE):
     def div(a, b):
         return int(ceil(a / float(b)))
     if page:
@@ -44,8 +46,12 @@ def show_gallery(request, slug = 'actors', page = None):
     else:
         galleries = Gallery.objects.exclude(title_slug='actors')
         objects, pages = paginate_queryset(galleries, page)
+    num_page = page and int(page)
+    num_pages = page and int(pages)
     context = {'objects': objects, 
                'current_page': page,
+               'previous_page': num_page and (num_page>1) and str(num_page-1),
+               'next_page': num_page and (num_page<num_pages) and str(num_page+1),
                'current_gallery': slug,
                'pages': pages,
                }
