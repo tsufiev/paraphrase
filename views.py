@@ -8,16 +8,6 @@ from paraphrase.articles.models import Article
 
 OBJS_PER_PAGE = 6
 
-from math import ceil
-def paginate_queryset(queryset, page, objs_per_page = OBJS_PER_PAGE):
-    def div(a, b):
-        return int(ceil(a / float(b)))
-    if page:
-        page, n = int(page), objs_per_page
-        return queryset[ (page-1)*n : page*n ], div(len(queryset), n)
-    else:
-        return queryset, None
-
 def show_section(request, section_id = 'home', template = None, context = {}):
     section = find_section(section_id)
     model = section['model']
