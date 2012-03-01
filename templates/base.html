@@ -14,14 +14,14 @@
         <table>
           <tr>
             {% for section in sections %}
-            <td><a href="/{{section.id}}">
+            <td><a href="/{{section}}">
                 <img src="/static/img/menu/
-{% if current_section == section.id %}
+{% if current_section == section %}
 active
 {% else %}
 normal
-{% endif %}/{{section.id}}.png"
-                     rollover="/static/img/menu/focus/{{section.id}}.png"/></a>
+{% endif %}/{{section}}.png"
+                     rollover="/static/img/menu/focus/{{section}}.png"/></a>
             </td>
             {% endfor %}
           </tr>

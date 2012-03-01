@@ -1,34 +1,40 @@
 # -*- coding: utf-8 -*-
+from articles.models import *
 
 sections = [
     {'id': 'home',
      'title': u'Плейбек театр "Парафраз"', 
-     'has_feed': False},
+     'model': None},
     {'id':     'theory',
      'title': u'О плейбек театре', 
-     'has_feed': True},
+     'model': Article},
     {'id':     'upcoming',
      'title': u'Афиша', 
-     'has_feed': True},
+     'model': Announcement},
     {'id':     'actors',
      'title': u'Актеры',
-     'has_feed': False},
-    {'id':     'actor',
-     'title': u'Актеры',
-     'has_feed': False},
+     'model': None},
     {'id':     'contacts',
      'title': u'Контакты',
-     'has_feed': True},
+     'model': Contact},
     {'id':     'photos',
      'title': u'Фотографии с перфомансов',
-     'has_feed': False},
+     'model': None},
     {'id':     'video',
      'title': u'Видео с перфомансов',
-     'has_feed': False},
+     'model': Video},
     {'id':     'feedback',
      'title': u'Отзывы',
-     'has_feed': True}]
+     'model': Feedback}]
 
-titles = dict([(entry['id'], entry['title']) for entry in sections])
-text_sections = tuple([(section['id'], section['title'])
-                       for section in sections if section['has_feed']])
+def find_section(section_id):
+    for section in sections:
+        if section['id'] == section_id:
+            return section
+    return None
+
+def get_section_ids():
+    section_ids = []
+    for section in sections:
+        section_ids.append(section['id'])
+    return section_ids

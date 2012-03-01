@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from photologue.models import Photo, Gallery
 
-from paraphrase.sections import sections, titles
+from paraphrase.sections import find_section, get_section_ids
 from paraphrase.articles.models import Article
 
 OBJS_PER_PAGE = 6
@@ -18,13 +18,15 @@ def paginate_queryset(queryset, page, objs_per_page = OBJS_PER_PAGE):
     else:
         return queryset, None
 
-def show_section(request, section = 'home', template = None, context = {}):
-    context = dict({'sections': sections,
-                    'title': titles[section],
-                    'current_section': section,
-                    'articles': Article.objects.filter(section=section),
+def show_section(request, section_id = 'home', template = None, context = {}):
+    section = find_section(section_id)
+    model = section['model']
+    context = dict({'sections': get_section_ids(),
+                    'title': section['title'],
+                    'current_section': section_id,
+                    'entries': model and model.objects.all(),
                     }.items() + context.items())
-    return render_to_response(template or '%s.html'%section, context)
+    return render_to_response(template or '%s.html'%section_id, context)
 
 def show_photo(request, photo, gallery = 'actors'):
     if gallery == 'actors':
