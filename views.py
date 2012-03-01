@@ -53,15 +53,3 @@ def show_gallery(request, slug = 'actors', page = None):
                         {'objects': paginator.page(int(page)),
                          'current_gallery': slug})
 
-# from os.path import basename
-# import re
-# def extract_fnum(path):
-#     m = re.match(r'([0-9]{2})\.gif', basename(path))
-#     if m:
-#         return int(m.group(1))
-
-# def rename_files(base):
-#     for file in listdir(base):
-#         n = extract_fnum(file)
-#         if n:
-#             rename(os.path.join(base,file), os.path.join(base,"%s.gif" % sections[n-1]))

@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^photos/gallery/(?P<slug>[\-\d\w]+)/page/(?P<page>\d+)/$', show_gallery, name='gallery_page'),
     url(r'^photos/gallery/(?P<gallery>[\-\d\w]+)/photo/(?P<photo>[\-\d\w]+)/$', show_photo, name='photo'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^photologue/', include('photologue.urls')),
     )
 
 for section in sections:
