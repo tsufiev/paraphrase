@@ -1,34 +1,34 @@
 {% extends "content.html" %}
-{% load photologue_tags %}
 {% block content %}
-{% for object in objects %}
+{% for object in objects.object_list %}
   <div class="actors">
-    {% if object.sample %}
-    <a href="{% url gallery object.title_slug %}">
-      <img class="actors" src="{{ object.sample.0.get_small_portrait_url }}"/>
+    {% if current_gallery %}
+    <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
+      <img class="actors" src="{{ object.get_small_portrait_url }}"/></a>
     {% else %}
-      {% if current_gallery == "actors" %}
-      <a href="{% url actor object.title_slug %}">
-      {% else %}
-      <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
-      {% endif %}
-      <img class="actors" src="{{ object.get_small_portrait_url }}"/>
+    <a href="{% url gallery object.title_slug %}">
+      <img class="actors" src="{{ object.sample.0.get_small_portrait_url }}"/></a>
     {% endif %}
-    </a>
     <p class="actors">{{ object.title }}</p>
   </div>
-{% endfor%}
-{% if current_page %}
+{% endfor %}
 <p>
-{% if object.sample %}
-{% if previous_page %}<a href="{% url page previous_page %}">Назад</a>{% endif %}
-Страница {{ current_page }} из {{ pages }} [галереи]
-{% if next_page %}<a href="{% url page next_page %}">Вперед</a>{% endif %}
+{% if current_gallery %}
+  {% if objects.has_previous %}
+  <a href="{% url gallery_page slug=current_gallery page=objects.previous_page_number %}">Назад</a>
+  {% endif %}
+  Страница {{ objects.number }} из {{ objects.paginator.num_pages }}
+  {% if objects.has_next %}
+  <a href="{% url gallery_page slug=current_gallery page=objects.next_page_number %}">Вперед</a>
+  {% endif %}
 {% else %}
-{% if previous_page %}<a href="{% url gallery_page slug=current_gallery page=previous_page %}">Назад</a>{% endif %}
-Страница {{ current_page }} из {{ pages }}
-{% if next_page %}<a href="{% url gallery_page slug=current_gallery page=next_page %}">Вперед</a>{% endif %}
+  {% if objects.has_previous %}
+  <a href="{% url page objects.previous_page_number %}">Назад</a>
+  {% endif %}
+  Страница {{ objects.number }} из {{ objects.paginator.num_pages }} [галереи]
+  {% if objects.has_next %}
+  <a href="{% url page objects.next_page_number %}">Вперед</a>
+  {% endif %}
 {% endif %}
 </p>
-{% endif %}
 {% endblock %}

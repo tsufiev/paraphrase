@@ -34,34 +34,25 @@ def show_photo(request, photo, gallery = 'actors'):
     return show_section(request, section, 'photo.html', 
                         {'photo': get_object_or_404(Photo, title_slug=photo)})
 
-from django.http import HttpResponse
+from django.core.paginator import Paginator
     
 def show_gallery(request, slug = 'actors', page = None):
     if slug:
         gallery = get_object_or_404(Gallery, title_slug=slug)
         photos = gallery.photos.all()
-        if slug != 'actors':
-            photos = photos.order_by('id')
-        objects, pages = paginate_queryset(photos, page)
+        if slug == 'actors':
+            return show_section(request, 'actors',
+                                context = {'objects': photos, 
+                                           'current_gallery': 'actors'})
+        else:
+            paginator = Paginator(photos.order_by('id'), OBJS_PER_PAGE)
     else:
         galleries = Gallery.objects.exclude(title_slug='actors')
-        objects, pages = paginate_queryset(galleries, page)
-    num_page = page and int(page)
-    num_pages = page and int(pages)
-    context = {'objects': objects, 
-               'current_page': page,
-               'previous_page': num_page and (num_page>1) and str(num_page-1),
-               'next_page': num_page and (num_page<num_pages) and str(num_page+1),
-               'current_gallery': slug,
-               'pages': pages,
-               }
-    if slug == 'actors':
-        return show_section(request, 'actors', 'gallery.html', context)
-    else:
-        # return HttpResponse('title %s, url %s' % (objects[0].title_slug, objects[0].))
-        return show_section(request, 'photos', 'gallery.html', context)
+        paginator = Paginator(galleries, OBJS_PER_PAGE)
+    return show_section(request, 'photos', 'gallery.html', 
+                        {'objects': paginator.page(int(page)),
+                         'current_gallery': slug})
 
-        
 # from os.path import basename
 # import re
 # def extract_fnum(path):
