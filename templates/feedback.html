@@ -1,5 +1,9 @@
 {% extends "articles.html" %}
-{% block no_article %}
-<h3>К сожалению, пока нет ни одного отзыва</h3>
+{% block entry %}
+  <p>{{ entry.text }}</p>
+  <p>(автор: {{ entry.author }})</p>
+{% endblock %}
+{% block no_entry %}
+  <h3>К сожалению, пока нет ни одного отзыва</h3>
 {% endblock %}
 
