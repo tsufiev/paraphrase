@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 
 from photologue.models import Photo, Gallery
 
@@ -22,7 +23,7 @@ def show_photo(request, photo, gallery = 'actors'):
     return show_section(request, section, 'photo.html', 
                         {'photo': get_object_or_404(Photo, title_slug=photo)})
 
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
     
 def show_gallery(request, slug = 'actors', page = None):
     if slug:
@@ -31,7 +32,10 @@ def show_gallery(request, slug = 'actors', page = None):
                               OBJS_PER_PAGE)
     else:
         paginator = Paginator(Gallery.objects.all(), OBJS_PER_PAGE)
-    return show_section(request, 'photos', 'gallery.html', 
-                        {'objects': paginator.page(int(page)),
-                         'current_gallery': slug})
+    try:
+        return show_section(request, 'photos', 'gallery.html', 
+                            {'objects': paginator.page(int(page)),
+                             'current_gallery': slug})
+    except EmptyPage:
+        raise Http404
 
