@@ -17,7 +17,9 @@
   {% if objects.has_previous %}
   <a href="{% url gallery_page slug=current_gallery page=objects.previous_page_number %}">Назад</a>
   {% endif %}
+  {% if objects.has_previous or objects.has_next %}
   Страница {{ objects.number }} из {{ objects.paginator.num_pages }}
+  {% endif %}
   {% if objects.has_next %}
   <a href="{% url gallery_page slug=current_gallery page=objects.next_page_number %}">Вперед</a>
   {% endif %}
@@ -25,7 +27,10 @@
   {% if objects.has_previous %}
   <a href="{% url page objects.previous_page_number %}">Назад</a>
   {% endif %}
-  Страница {{ objects.number }} из {{ objects.paginator.num_pages }} [галереи]
+  {% if objects.has_previous or objects.has_next %}
+  Страница {{ objects.number }} из {{ objects.paginator.num_pages }}
+  [галереи]
+  {% endif %}
   {% if objects.has_next %}
   <a href="{% url page objects.next_page_number %}">Вперед</a>
   {% endif %}

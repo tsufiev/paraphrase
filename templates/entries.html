@@ -2,7 +2,8 @@
 {% load markup %}
 {% block content %}
 <div class="articles">
-  {% for entry in entries %}
+  {% block top %}{% endblock %}
+  {% for entry in entries reversed %}
     {% block entry %}
       {% if entry.title %}<h1>{{ entry.title }}</h1>{% endif %}
       {{ entry.text|textile }}

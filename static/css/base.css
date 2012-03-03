@@ -26,7 +26,7 @@ div.main
 div.content
 {  
   margin: 40px 150px;
-  border: 1px yellow solid;
+  /* border: 1px yellow solid; */
   overflow: hidden;
   }
 
