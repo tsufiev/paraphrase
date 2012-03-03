@@ -1,15 +1,4 @@
-{% extends "content.html" %}
-{% load markup %}
-{% block content %}
-<div class="articles">
-  {% for entry in entries %}
-    {% block entry %}
-      {% if entry.title %}<h1>{{ entry.title }}</h1>{% endif %}
-      {{ entry.text|textile }}
-    {% endblock %}
-    {% if not forloop.last %}<hr/>{% endif %}
-  {% empty %}
-    {% block no_entry %}{% endblock %}
-  {% endfor %}
-</div>
+{% extends "entries.html" %}
+{% block no_article %}
+<h3>К сожалению, пока нет ни одной статьи</h3>
 {% endblock %}

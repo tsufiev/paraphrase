@@ -5,14 +5,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 from paraphrase.views import show_section, show_gallery, show_photo
-from paraphrase.sections import sections
+from sections.views import sections
 
 from django.shortcuts import redirect
 # from django.core.urlresolvers import reverse
 
 urlpatterns = patterns('',
     url(r'^$', show_section),
-    url(r'^actors/$', show_gallery),
     url(r'^actors/(?P<photo>[\-\d\w]+)/$', show_photo, name='actor'),
     url(r'^photos/$', show_gallery, {'slug': None, 'page': '1'}),
     url(r'^photos/page/(?P<page>\d+)/$', show_gallery, {'slug': None}, name='page'),

@@ -13,11 +13,18 @@ class Entry(models.Model):
         abstract = True
         ordering = ["id"]
 
-class Article(Entry):
-    title = models.CharField(max_length=100, blank=True)
-
+class TitledEntry(Entry):
+    title = models.CharField(max_length=100)
+    title_slug = models.SlugField(unique=True)
     def __unicode__(self):
-        return self.title or u"Статья %s" % self.id
+        return self.title
+
+class Article(TitledEntry):
+    pass
+
+from photologue.models import Photo
+class Actor(Photo):
+    pass
 
 class Announcement(Entry):
     pass
@@ -31,9 +38,12 @@ class Video(Entry):
 class Feedback(Entry):
     author = models.CharField(max_length=50)
 
-admin.site.register(Article)
-admin.site.register(Feedback)
-admin.site.register(Announcement)
-admin.site.register(Video)
-admin.site.register(Contact)
+class TitledEntryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'title_slug': ('title',)}
 
+admin.site.register(Article, TitledEntryAdmin)
+admin.site.register(Announcement)
+admin.site.register(Actor, TitledEntryAdmin)
+admin.site.register(Contact)
+admin.site.register(Video)
+admin.site.register(Feedback)

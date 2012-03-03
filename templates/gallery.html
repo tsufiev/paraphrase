@@ -4,10 +4,10 @@
   <div class="actors">
     {% if current_gallery %}
     <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
-      <img class="actors" src="{{ object.get_small_portrait_url }}"/></a>
+      <img class="actors" src="{{ object.get_gallery_url }}"/></a>
     {% else %}
     <a href="{% url gallery object.title_slug %}">
-      <img class="actors" src="{{ object.sample.0.get_small_portrait_url }}"/></a>
+      <img class="actors" src="{{ object.sample.0.get_gallery_url }}"/></a>
     {% endif %}
     <p class="actors">{{ object.title }}</p>
   </div>

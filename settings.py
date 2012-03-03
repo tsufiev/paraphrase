@@ -124,6 +124,18 @@ else:
     # Don't forget to use absolute paths, not relative paths.
         )
 
+PHOTOLOGUE_DIR = 'photologue'
+from datetime import datetime
+from os.path import join
+from string import rjust
+def calc_filepath(instance, filename):
+    def pad(n):
+        return str(n).rjust(2,'0')
+    now = datetime.now()
+    return join(PHOTOLOGUE_DIR, str(now.year), pad(now.month), pad(now.day),
+                pad(now.hour), pad(now.minute), filename)
+
+PHOTOLOGUE_PATH = calc_filepath
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -137,8 +149,8 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.webdesign',
     'photologue',
-    # 'tagging',
-    'paraphrase.articles',
+    'tagging',
+    'paraphrase.sections',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

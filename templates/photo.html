@@ -1,10 +1,13 @@
 {% extends "content.html" %}
+{% load markup %}
 {% block content %}
 <div class="actor">
-  <img class="actor" src="{{ photo.get_small_portrait_url }}"/>
   {% if current_section == "actors" %}
-  <p class="actor">Это актер</p>
+  <img class="actor" src="{{ photo.get_actor_url }}"/>
+  <h2>{{ photo.title }}</h2>
+  {{ photo.caption|textile }}
   {% else %}
+  <img class="actor" src="{{ photo.get_display_url }}"/>
   <p class="actor">Это обычная фотка</p>
   {% endif %}
 </div>
