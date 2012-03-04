@@ -1,14 +1,24 @@
 {% extends "content.html" %}
 {% load markup %}
+{% load photologue_tags %}
 {% block content %}
+{% if current_section == "actors" %}
 <div class="actor">
-  {% if current_section == "actors" %}
   <img class="actor" src="{{ photo.get_actor_url }}"/>
   <h2>{{ photo.title }}</h2>
   {{ photo.caption|textile }}
-  {% else %}
-  <img class="actor" src="{{ photo.get_display_url }}"/>
-  <p class="actor">Это обычная фотка</p>
+</div>
+{% else %}
+<img class="photo" src="{{ photo.get_display_url }}"/>
+<div class="links">
+  <a href="{% url gallery_page gallery page_number %}">X</a><br/>
+  {% if prev_in_gallery %}
+  <a href="{% url photo gallery prev_in_gallery.title_slug %}">Prev</a>
+  {% endif %}
+  <br/>
+  {% if next_in_gallery %}
+  <a href="{% url photo gallery next_in_gallery.title_slug %}">Next</a>
   {% endif %}
 </div>
+{% endif %}
 {% endblock %}

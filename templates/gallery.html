@@ -1,15 +1,15 @@
 {% extends "content.html" %}
 {% block content %}
 {% for object in objects.object_list %}
-  <div class="actors">
+  <div class="gallery">
     {% if current_gallery %}
     <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
-      <img class="actors" src="{{ object.get_gallery_url }}"/></a>
+      <img class="gallery" src="{{ object.get_gallery_url }}"/></a>
     {% else %}
     <a href="{% url gallery object.title_slug %}">
-      <img class="actors" src="{{ object.sample.0.get_gallery_url }}"/></a>
+      <img class="gallery" src="{{ object.sample.0.get_gallery_url }}"/></a>
     {% endif %}
-    <p class="actors">{{ object.title }}</p>
+    <p class="gallery">{{ object.title }}</p>
   </div>
 {% endfor %}
 <p>

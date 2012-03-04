@@ -41,27 +41,42 @@ def show_feedbacks(request):
             return HttpResponseRedirect('/feedbacks/')
     else:
         form = FeedbackForm()
-
     return show_section(request, 'feedbacks', context = {'form': form})
+
+from django.core.paginator import Paginator, EmptyPage
 
 def show_photo(request, photo, gallery = 'actors'):
     section = 'actors' if gallery == 'actors' else 'photos'
-    return show_section(request, section, 'photo.html', 
-                        {'photo': get_object_or_404(Photo, title_slug=photo)})
+    photo = get_object_or_404(Photo, title_slug=photo)
+    gallery_obj = Gallery.objects.get(title_slug=gallery)
+    return show_section(request, section, 'photo.html', {
+        'photo': photo,
+        'gallery': gallery,
+        'page_number': get_gallery_page_number(gallery_obj, photo),
+        'next_in_gallery': photo.get_next_in_gallery(gallery_obj),
+        'prev_in_gallery': photo.get_previous_in_gallery(gallery_obj), 
+        })
+        
+def make_pages(objs):
+    return Paginator(objs, OBJS_PER_PAGE)
 
-from django.core.paginator import Paginator, EmptyPage
-    
-def show_gallery(request, slug = 'actors', page = None):
+def get_page_number(paginator, object):
+    for page in paginator.page_range:
+        if object in paginator.page(page).object_list:
+            return page
+
+def get_gallery_page_number(gallery, photo):
+        return get_page_number(make_pages(gallery.photos.order_by('id')), photo)
+
+def show_gallery(request, slug = None, page = None):
     if slug:
         gallery = get_object_or_404(Gallery, title_slug=slug)
-        paginator = Paginator(gallery.photos.order_by('id'), 
-                              OBJS_PER_PAGE)
+        paginator = make_pages(gallery.photos.order_by('id'))
     else:
-        paginator = Paginator(Gallery.objects.all(), OBJS_PER_PAGE)
+        paginator = make_pages(Gallery.objects.all())
     try:
         return show_section(request, 'photos', 'gallery.html', 
                             {'objects': paginator.page(int(page)),
                              'current_gallery': slug})
     except EmptyPage:
         raise Http404
-

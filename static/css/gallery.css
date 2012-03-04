@@ -1,4 +1,4 @@
-div.actors
+div.gallery
 { 
   width: 210px;
   height: 230px;
@@ -9,18 +9,18 @@ div.actors
   position: relative;
 }
 
-/* img.actors, */ p.actors { position: absolute; }
-
-img.actors
+img.gallery
 { 
   border: 1px #ae2525 solid;
   margin: 10px;
-  /* left: 10px; */
-  /* top: 15px; */
-  /* left: 30px; */
 }
 
-p.actors
+img.gallery:hover
+{
+  border: 1px #00f solid;
+}
+
+p.gallery
 { 
   width: 210px;
   height: 30px;
@@ -31,15 +31,10 @@ p.actors
   overflow: hidden;
  }
 
-img.actors:hover
-{
-  border: 1px #00f solid;
-}
-
 .actor img
 {
   float: left; 
-  border: 1px red solid;
+  border: 1px silver solid;
   margin: 10px;
 }
 
@@ -47,6 +42,16 @@ img.actors:hover
 { 
   text-align: left;
 }
+
+img.photo
+{ 
+  border: 1px silver solid;
+  }
+
+.links a
+{ 
+  color: yellow;
+ }
 
 /* img.image-detail */
 /* { */

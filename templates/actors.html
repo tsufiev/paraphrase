@@ -1,11 +1,11 @@
 {% extends "content.html" %}
 {% block content %}
 {% for entry in entries %}
-  <div class="actors">
+  <div class="gallery">
     <a href="{% url actor entry.title_slug %}">
-      <img class="actors" src="{{ entry.get_gallery_url }}"/>
+      <img class="gallery" src="{{ entry.get_gallery_url }}"/>
     </a>
-    <p class="actors">{{ entry.title }}</p>
+    <p class="gallery">{{ entry.title }}</p>
   </div>
 {% endfor %}
 {% endblock %}
