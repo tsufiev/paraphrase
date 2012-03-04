@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="label">
-  <img src="/static/img/labels/{{current_section}}.png"/>
-</div>
+<img src="/static/img/labels/{{current_section}}.png"/>
 <div class="content">
   {% block content %}{% endblock %}
 </div>

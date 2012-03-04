@@ -1,6 +1,6 @@
 body
 { 
-  background:  #34251e;
+  background:  /* #34251e; */ #161413;
 }
 
 .menu table, .main table
@@ -29,4 +29,3 @@ div.content
   /* border: 1px yellow solid; */
   overflow: hidden;
   }
-
