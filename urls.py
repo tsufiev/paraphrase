@@ -8,7 +8,6 @@ from paraphrase.views import show_section, show_gallery, show_photo, show_feedba
 from sections.views import sections
 
 from django.shortcuts import redirect
-# from django.core.urlresolvers import reverse
 
 urlpatterns = patterns('',
     url(r'^$', show_section),
@@ -24,7 +23,7 @@ urlpatterns = patterns('',
     )
 
 for section in sections:
-    urlpatterns += patterns('', ('^(' + section['id'] + ')$', show_section))
+    urlpatterns += patterns('', ('^(' + section['id'] + ')/$', show_section))
 
 from django.conf import settings
 if settings.DEBUG:
