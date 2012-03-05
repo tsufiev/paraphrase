@@ -17,6 +17,8 @@ a:focus
   color: transparent;
 }
 
+a { outline: none } /* remove dotted border around links */
+
 div.menu, div.main, div.main-wrapper, div.footer { width: 1024px }
 
 div.main-wrapper
