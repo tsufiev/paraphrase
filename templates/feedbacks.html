@@ -1,4 +1,5 @@
 {% extends "entries.html" %}
+{% load markup %}
 {% block top %}
 <h3>Оставить отзыв</h3>
 <form action="/feedbacks/" method="post">{% csrf_token %}
@@ -8,6 +9,6 @@
 <hr/>
 {% endblock %}
 {% block entry %}
-  <p>{{ entry.text }}</p>
+  <p>{{ entry.text|textile }}</p>
   <p>(автор: {{ entry.author }}, написано: {{ entry.published_on }})</p>
 {% endblock %}

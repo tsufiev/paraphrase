@@ -26,7 +26,7 @@ div.main-wrapper
 div.main
 { 
   background: url("/static/img/content.png") no-repeat;
-  min-height: 600px;
+  min-height: 650px;
 }
 
 div.content

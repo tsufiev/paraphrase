@@ -7,7 +7,7 @@ from photologue.models import Photo, Gallery
 from sections.views import find_section, get_section_ids
 from sections.models import Feedback
 
-OBJS_PER_PAGE = 6
+OBJS_PER_PAGE = 12
 
 def show_section(request, section_id = 'home', template = None, context = {}):
     section = find_section(section_id)
