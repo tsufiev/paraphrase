@@ -10,7 +10,7 @@ body
 
 .menu td, .main td { padding: 0 }
 
-a:active, a:focus 
+a:focus
 { 
   color: transparent;
 }

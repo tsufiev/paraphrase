@@ -48,3 +48,21 @@ img.photo
 { 
   border: 1px silver solid;
   }
+
+.pages { clear: left; padding: 5px; }
+.pages a, .pages span
+{ 
+  border: silver 1px solid;
+  padding: 3px;
+ }
+
+.pages a 
+{ 
+  background: #463a29;
+  color: orange;
+  text-decoration: none;
+}
+
+.pages span { color: silver }
+
+.pages a:hover { background: gray; }
