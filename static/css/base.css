@@ -10,6 +10,8 @@ body
 
 .menu td, .main td { padding: 0 }
 
+table img { border: 0 } /* for ie8, ie9 */
+
 a:focus
 { 
   color: transparent;
