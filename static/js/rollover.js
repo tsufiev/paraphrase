@@ -51,8 +51,10 @@ function init_rollovers() {
 
     for ( var href in objs ) {
         for ( var i = 0; i < objs[href].length; i++ ) {
-            objs[href][i].onmouseover = make_images_changer(objs[href], "rollover_url");
-            objs[href][i].onmouseout = make_images_changer(objs[href], "base_url");
+            objs[href][i].onmouseover = 
+                make_images_changer(objs[href], "rollover_url");
+            objs[href][i].onmouseout = 
+                make_images_changer(objs[href], "base_url");
         }
     }
 }
