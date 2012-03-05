@@ -9,8 +9,6 @@
       {{ entry.text|textile }}
     {% endblock %}
     {% if not forloop.last %}<hr/>{% endif %}
-  {% empty %}
-    {% block no_entry %}{% endblock %}
   {% endfor %}
 </div>
 {% endblock %}
