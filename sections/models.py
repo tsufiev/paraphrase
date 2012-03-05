@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib import admin
 
 class Entry(models.Model):
-    text = models.TextField()
+    text = models.TextField(u'Отзыв')
     published_on = models.DateTimeField(auto_now_add=True)
     is_visible = models.BooleanField(default=True)
 
@@ -36,7 +36,7 @@ class Video(Entry):
     url = models.URLField()
 
 class Feedback(Entry):
-    author = models.CharField(max_length=50)
+    author = models.CharField(u'Автор',max_length=50)
 
 class TitledEntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'title_slug': ('title',)}

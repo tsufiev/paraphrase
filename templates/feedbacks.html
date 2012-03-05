@@ -1,9 +1,11 @@
 {% extends "entries.html" %}
 {% block top %}
+<h3>Оставить отзыв</h3>
 <form action="/feedbacks/" method="post">{% csrf_token %}
-{{ form.as_ul  }}
+<table class="feedback">{{ form.as_table  }}</table>
 <input type="submit" value="Опубликовать" />
 </form>
+<hr/>
 {% endblock %}
 {% block entry %}
   <p>{{ entry.text }}</p>

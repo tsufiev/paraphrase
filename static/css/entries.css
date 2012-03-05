@@ -7,3 +7,5 @@ div.entries
   padding: 10px;
   color: orange;
 }
+
+.feedback th { padding-right: 5px; }
