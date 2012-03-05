@@ -7,17 +7,6 @@
     <p class="gallery">{{ entry.title }}</p>
   </div>
 {% endfor %}
-<div class="pages">
-  {% if entries.has_previous %}
-  <a href="{% url gallery_page slug=current_gallery page=entries.previous_page_number %}">
-    {{ entries.previous_page_number }}</a>
-  {% endif %}
-  {% if entries.has_previous or entries.has_next %}
-  <span>{{ entries.number }}/{{ entries.paginator.num_pages }}</span>
-  {% endif %}
-  {% if entries.has_next %}
-  <a href="{% url gallery_page slug=current_gallery page=entries.next_page_number %}">
-    {{ entries.next_page_number }}</a>
-  {% endif %}
-</div>
 {% endblock %}
+{% block prev_page %}{% url gallery_page slug=current_gallery page=entries.previous_page_number %}{% endblock %}
+{% block next_page %}{% url gallery_page slug=current_gallery page=entries.next_page_number %}{% endblock %}
