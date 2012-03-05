@@ -9,16 +9,28 @@
   {{ photo.caption|textile }}
 </div>
 {% else %}
-<img class="photo" src="{{ photo.get_display_url }}"/>
 <div class="links">
-  <a href="{% url gallery_page gallery page_number %}">X</a><br/>
-  {% if prev_in_gallery %}
-  <a href="{% url photo gallery prev_in_gallery.title_slug %}">Prev</a>
-  {% endif %}
-  <br/>
-  {% if next_in_gallery %}
-  <a href="{% url photo gallery next_in_gallery.title_slug %}">Next</a>
-  {% endif %}
+  <table>
+    <tr>
+      <td></td><td></td>
+      <td>
+        <a href="{% url gallery_page gallery page_number %}">
+          <img src="/static/img/red_cross.png"/>
+        </a></td></tr>
+    <tr>
+      <td>
+        {% if prev_in_gallery %}
+        <a href="{% url photo gallery prev_in_gallery.title_slug %}">
+          <img src="/static/img/red_solid_arrow_reverse.png"/></a>
+        {% endif %}
+        </td>
+      <td><img class="photo" src="{{ photo.get_display_url }}"/></td>
+      <td>{% if next_in_gallery %}
+        <a href="{% url photo gallery next_in_gallery.title_slug %}">
+          <img src="/static/img/red_solid_arrow.png"/></a>
+        {% endif %}
+      </td>
+  </tr></table>
 </div>
 {% endif %}
 {% endblock %}
