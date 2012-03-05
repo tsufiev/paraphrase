@@ -2,21 +2,21 @@
 {% block content %}
 {% for entry in entries.object_list %}
   <div class="gallery">
-    <a href="{% url photo gallery=current_gallery photo=entry.title_slug %}">
-      <img class="gallery" src="{{ entry.get_gallery_url }}"/></a>
+    <a href="{% url gallery entry.title_slug %}">
+      <img class="gallery" src="{{ entry.sample.0.get_gallery_url }}"/></a>
     <p class="gallery">{{ entry.title }}</p>
   </div>
 {% endfor %}
 <div class="pages">
   {% if entries.has_previous %}
-  <a href="{% url gallery_page slug=current_gallery page=entries.previous_page_number %}">
+  <a href="{% url page entries.previous_page_number %}">
     {{ entries.previous_page_number }}</a>
   {% endif %}
   {% if entries.has_previous or entries.has_next %}
   <span>{{ entries.number }}/{{ entries.paginator.num_pages }}</span>
   {% endif %}
   {% if entries.has_next %}
-  <a href="{% url gallery_page slug=current_gallery page=entries.next_page_number %}">
+  <a href="{% url page entries.next_page_number %">
     {{ entries.next_page_number }}</a>
   {% endif %}
 </div>

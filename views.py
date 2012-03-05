@@ -86,7 +86,8 @@ def show_gallery(request, slug = None, page = None):
         entries = gallery.photos.order_by('id')
     else:
         entries = Gallery.objects.all()
-    return show_section(request, 'photos', 'gallery.html', 
+    template = 'gallery.html' if slug else 'galleries.html'
+    return show_section(request, 'photos', template,
                         {'entries': entries,
                          'page': page,
                          'current_gallery': slug},
