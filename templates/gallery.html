@@ -1,34 +1,34 @@
 {% extends "content.html" %}
 {% block content %}
-{% for object in objects.object_list %}
+{% for entry in entries.object_list %}
   <div class="gallery">
     {% if current_gallery %}
-    <a href="{% url photo gallery=current_gallery photo=object.title_slug %}">
-      <img class="gallery" src="{{ object.get_gallery_url }}"/></a>
+    <a href="{% url photo gallery=current_gallery photo=entry.title_slug %}">
+      <img class="gallery" src="{{ entry.get_gallery_url }}"/></a>
     {% else %}
-    <a href="{% url gallery object.title_slug %}">
-      <img class="gallery" src="{{ object.sample.0.get_gallery_url }}"/></a>
+    <a href="{% url gallery entry.title_slug %}">
+      <img class="gallery" src="{{ entry.sample.0.get_gallery_url }}"/></a>
     {% endif %}
-    <p class="gallery">{{ object.title }}</p>
+    <p class="gallery">{{ entry.title }}</p>
   </div>
 {% endfor %}
 <div class="pages">
-  {% if objects.has_previous %}
+  {% if entries.has_previous %}
   <a href="{% if current_gallery %}
-{% url gallery_page slug=current_gallery page=objects.previous_page_number %}
+{% url gallery_page slug=current_gallery page=entries.previous_page_number %}
 {% else %}
-{% url page objects.previous_page_number %}
-{% endif %}">{{ objects.previous_page_number }}</a>
+{% url page entries.previous_page_number %}
+{% endif %}">{{ entries.previous_page_number }}</a>
   {% endif %}
-  {% if objects.has_previous or objects.has_next %}
-  <span>{{ objects.number }}/{{ objects.paginator.num_pages }}</span>
+  {% if entries.has_previous or entries.has_next %}
+  <span>{{ entries.number }}/{{ entries.paginator.num_pages }}</span>
   {% endif %}
-  {% if objects.has_next %}
+  {% if entries.has_next %}
   <a href="{% if current_gallery %}
-{% url gallery_page slug=current_gallery page=objects.next_page_number %}
+{% url gallery_page slug=current_gallery page=entries.next_page_number %}
 {% else %}
-{% url page objects.next_page_number %}
-{% endif %}">{{ objects.next_page_number }}</a>
+{% url page entries.next_page_number %}
+{% endif %}">{{ entries.next_page_number }}</a>
   {% endif %}
 </div>
 {% endblock %}
