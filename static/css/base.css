@@ -1,5 +1,5 @@
 body
-{ 
+{
   background:  /* #34251e; */ #161413;
 }
 
@@ -15,18 +15,22 @@ a:focus
   color: transparent;
 }
 
-div.menu, div.main, div.footer { width: 1024px }
+div.menu, div.main, div.main-wrapper, div.footer { width: 1024px }
+
+div.main-wrapper
+{ 
+  border: 1px #161413 solid;
+  background: url("/static/img/content-bottom.png") repeat-y;
+}
 
 div.main
 { 
-  background: url("/static/img/content.png") no-repeat, 
-  url("/static/img/content-bottom.png") repeat-y;
-  height: 800px;
+  background: url("/static/img/content.png") no-repeat;
+  min-height: 600px;
 }
 
 div.content
 {  
-  margin: 40px 150px;
-  /* border: 1px yellow solid; */
+  margin: 20px 150px;
   overflow: hidden;
   }
