@@ -1,9 +1,9 @@
-div.articles
+div.entries
 { 
   /* border: 1px red solid; */
   /* background: #c19a72; */
   text-align: justify;
   font-weight: normal;
   padding: 10px;
-  color: silver;
+  color: orange;
 }

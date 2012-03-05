@@ -19,8 +19,9 @@ div.menu, div.main, div.footer { width: 1024px }
 
 div.main
 { 
-  background: url("/static/img/content.png") no-repeat;
-  height: 641px;
+  background: url("/static/img/content.png") no-repeat, 
+  url("/static/img/content-bottom.png") repeat-y;
+  height: 600px;
 }
 
 div.content
