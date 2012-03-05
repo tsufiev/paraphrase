@@ -9,3 +9,5 @@ div.entries
 }
 
 .feedback th { padding-right: 5px; }
+
+iframe.video { border: silver 1px solid; }

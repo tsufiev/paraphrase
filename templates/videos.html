@@ -1,4 +1,12 @@
-{% extends "content.html" %}
-{% block content %}
+{% extends "entries.html" %}
+{% load paraphrase_tags %}
+{% load markup %}
+{% block entry %}
+<div align="center">
+<iframe 
+   class="video" width="560" height="315"
+   src="http://www.youtube.com/embed/{{ entry.url|baselink }}"
+   frameborder="0" allowfullscreen></iframe>
+<p>{{ entry.text|textile }}</p>
+</div>
 {% endblock %}
-
