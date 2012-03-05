@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from models import *
+from photologue.models import Gallery
 
 sections = [
     {'id': 'home',
@@ -24,7 +25,7 @@ sections = [
      'objs_per_page': None},
     {'id':     'photos',
      'title': u'Фотографии с перфомансов',
-     'model': None,
+     'model': Gallery,
      'objs_per_page': 12},
     {'id':     'videos',
      'title': u'Видео с перфомансов',

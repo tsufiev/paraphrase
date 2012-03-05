@@ -64,7 +64,6 @@ def show_photo(request, photo, gallery = None):
             'prev_in_gallery': photo.get_previous_in_gallery(gallery_obj), 
             })
         
-from django.http import HttpResponse
 def make_pages(objects, section_id = 'photos'):
     objs_per_page = find_section(section_id)['objs_per_page']
     if objs_per_page:
@@ -80,15 +79,10 @@ def get_page_number(paginator, object):
 def get_gallery_page_number(gallery, photo):
     return get_page_number(make_pages(gallery.photos.order_by('id')), photo)
 
-def show_gallery(request, slug = None, page = None):
-    if slug:
-        gallery = get_object_or_404(Gallery, title_slug=slug)
-        entries = gallery.photos.order_by('id')
-    else:
-        entries = Gallery.objects.all()
-    template = 'gallery.html' if slug else 'galleries.html'
-    return show_section(request, 'photos', template,
-                        {'entries': entries,
+def show_gallery(request, gallery, page = None):
+    gallery_obj = get_object_or_404(Gallery, title_slug=gallery)
+    return show_section(request, 'photos', 'gallery.html',
+                        {'entries': gallery_obj.photos.order_by('id'),
                          'page': page,
-                         'current_gallery': slug},
+                         'current_gallery': gallery},
                         page)

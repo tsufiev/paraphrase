@@ -1,0 +1,12 @@
+{% extends "content.html" %}
+{% block content %}
+{% for entry in entries.object_list %}
+  <div class="gallery">
+    <a href="{% url paraphrase.views.show_gallery gallery=entry.title_slug page=1 %}">
+      <img class="gallery" src="{{ entry.sample.0.get_gallery_url }}"/></a>
+    <p class="gallery">{{ entry.title }}</p>
+  </div>
+{% endfor %}
+{% endblock %}
+{% block prev_page %}{% url paraphrase.views.show_section "photos" entries.previous_page_number %}{% endblock %}
+{% block next_page %}{% url paraphrase.views.show_section "photos" entries.next_page_number %}{% endblock %}
