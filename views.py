@@ -45,17 +45,20 @@ def show_feedbacks(request):
 
 from django.core.paginator import Paginator, EmptyPage
 
-def show_photo(request, photo, gallery = 'actors'):
-    section = 'actors' if gallery == 'actors' else 'photos'
+def show_photo(request, photo, gallery = None):
     photo = get_object_or_404(Photo, title_slug=photo)
-    gallery_obj = Gallery.objects.get(title_slug=gallery)
-    return show_section(request, section, 'photo.html', {
-        'photo': photo,
-        'gallery': gallery,
-        'page_number': get_gallery_page_number(gallery_obj, photo),
-        'next_in_gallery': photo.get_next_in_gallery(gallery_obj),
-        'prev_in_gallery': photo.get_previous_in_gallery(gallery_obj), 
-        })
+    if gallery is None:
+        return show_section(request, 'actors', 'photo.html', {
+                'photo': photo})
+    else:
+        gallery_obj = Gallery.objects.get(title_slug=gallery)
+        return show_section(request, 'photos', 'photo.html', {
+            'photo': photo,
+            'gallery': gallery,
+            'page_number': get_gallery_page_number(gallery_obj, photo),
+            'next_in_gallery': photo.get_next_in_gallery(gallery_obj),
+            'prev_in_gallery': photo.get_previous_in_gallery(gallery_obj), 
+            })
         
 def make_pages(objs):
     return Paginator(objs, OBJS_PER_PAGE)

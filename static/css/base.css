@@ -21,7 +21,7 @@ div.main
 { 
   background: url("/static/img/content.png") no-repeat, 
   url("/static/img/content-bottom.png") repeat-y;
-  height: 600px;
+  height: 800px;
 }
 
 div.content
