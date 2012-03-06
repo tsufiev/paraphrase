@@ -8,5 +8,4 @@
   </div>
 {% endfor %}
 {% endblock %}
-{% block prev_page %}{% url paraphrase.views.show_gallery current_gallery entries.previous_page_number %}{% endblock %}
-{% block next_page %}{% url paraphrase.views.show_gallery current_gallery entries.next_page_number %}{% endblock %}
+{% block page %}{% url paraphrase.views.show_gallery current_gallery page %}{% endblock %}

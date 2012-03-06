@@ -3,16 +3,12 @@
 <img src="/static/img/labels/{{current_section}}.png"/>
 <div class="content">{% block content %}{% endblock %}</div>
 <div class="pages">
-  {% if entries.has_previous %}
-  <a href="{% block prev_page %}{% endblock %}">
-    {{ entries.previous_page_number }}</a>
+  {% for page in pages %}
+  {% if page == entries.number %}
+  <span>{{ entries.number }}</span>
+  {% else %}
+  <a href="{% block page %}{% endblock %}">{{ page }}</a>
   {% endif %}
-  {% if entries.has_previous or entries.has_next %}
-  <span>{{ entries.number }}/{{ entries.paginator.num_pages }}</span>
-  {% endif %}
-  {% if entries.has_next %}
-  <a href="{% block next_page %}{% endblock %}">
-    {{ entries.next_page_number }}</a>
-  {% endif %}
+  {% endfor %}
 </div>
 {% endblock %}

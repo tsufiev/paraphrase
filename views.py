@@ -22,7 +22,9 @@ def show_section(request,
     pages = make_pages(context['entries'], section_id)
     if page and pages:
         try:
-            context['entries'] = pages.page(int(page))
+            page = int(page)
+            context['entries'] = pages.page(page)
+            context['pages'] = neighbours(pages.page_range, page)
         except EmptyPage:
             raise Http404
     context.update(csrf(request))
@@ -70,6 +72,19 @@ def make_pages(objects, section_id = 'photos'):
         return Paginator(objects, objs_per_page)
     else:
         return None
+
+def neighbours(seq, elem# , include_ends = True, simplify_ellipsis = True
+               ):
+    try:
+        index = seq.index(elem)
+    except ValueError:
+        return None
+    return seq[max(0, index-1): min(len(seq), index+2)]
+    # if include_ends:
+    #     if positions[0] > 0: positions.insert(0, 0)
+    #     if positions[-1] < len(seq)-1: positions.append(len(seq)-1)
+    # return positions
+    
 
 def get_page_number(paginator, object):
     for page in paginator.page_range:
