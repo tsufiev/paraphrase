@@ -44,7 +44,12 @@ p.gallery
   text-align: left;
 }
 
-.actor { color: orange }
+.actor
+{ 
+  color: orange;
+}
+
+p.actor { font-size: larger; }
 
 img.photo
 { 

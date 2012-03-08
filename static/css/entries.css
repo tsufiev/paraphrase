@@ -6,6 +6,7 @@ div.entries
   font-weight: normal;
   padding: 10px;
   color: orange;
+  font-size: larger;
 }
 
 .feedback th { padding-right: 5px; }
