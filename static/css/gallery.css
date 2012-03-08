@@ -25,7 +25,7 @@ p.gallery
   width: 210px;
   height: 30px;
   position: absolute;
-  font-size: smaller;
+  font-size: medium;
   top: 190px;
   text-align: center;
   overflow: hidden;
