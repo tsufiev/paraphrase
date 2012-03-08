@@ -17,3 +17,4 @@ iframe.video
 }
 
 .entries a:focus { color: silver; }
+.entries a { color: orange }

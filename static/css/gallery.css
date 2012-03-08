@@ -44,6 +44,8 @@ p.gallery
   text-align: left;
 }
 
+.actor { color: orange }
+
 img.photo
 { 
   border: 1px silver solid;
