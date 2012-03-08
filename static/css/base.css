@@ -6,6 +6,7 @@ body
 .menu table, .main table
 { 
   border-spacing: 0;
+  border-collapse: collapse; /* fix for ie7 */
 }
 
 .menu td, .main td { padding: 0 }
