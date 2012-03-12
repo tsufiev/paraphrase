@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Плейбек театр "Парафраз"{% endblock %}
 {% block main %}
+<div class="home">
 <table>
   <tr>
     <td><a href="/videos"><img src="/static/img/home/normal/1-1.png" rollover="/static/img/home/focus/1-1.png"/></a></td>
@@ -130,4 +131,12 @@
     <td><a href="/photos"><img src="/static/img/home/normal/12-9.png" rollover="/static/img/home/focus/12-9.png"/></a></td>
     <td><img src="/static/img/home/normal/12-10.png"/></td></tr>
 </table>
+<div id="announcements">
+  <a href="/announcements">
+    {% for entry in entries %}
+    {% if forloop.last %}
+    {{ entry.text|truncatewords:18 }}
+    {% endif %}
+    {% endfor %}</a></div>
+</div>
 {% endblock %}

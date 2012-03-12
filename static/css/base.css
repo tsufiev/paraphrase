@@ -25,13 +25,13 @@ div.menu, div.main, div.main-wrapper, div.footer { width: 1024px }
 div.main-wrapper
 { 
   border: 1px #161413 solid;
-  background: url("/static/img/content-bottom.png") repeat-y;
+  background: url("/static/img/content_bottom.png") repeat-y;
 }
 
 div.main
 { 
   background: url("/static/img/content.png") no-repeat;
-  min-height: 650px;
+  min-height: 722px;
 }
 
 div.content
@@ -39,3 +39,22 @@ div.content
   margin: 20px 150px;
   overflow: hidden;
   }
+
+div.home { position: relative }
+div#announcements
+{
+  position: absolute;
+  bottom: 392px;
+  right: 40px;
+  height: 100px;
+  width: 222px;
+  color: orange;
+  overflow: hidden;
+}
+
+#announcements a 
+{ 
+  color: orange;
+  text-decoration: none;
+  font-size: smaller;
+}

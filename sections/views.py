@@ -5,7 +5,7 @@ from photologue.models import Gallery
 sections = [
     {'id': 'home',
      'title': u'Плейбек театр "Парафраз"', 
-     'model': None,
+     'model': Announcement,
      'objs_per_page': None},
     {'id':     'articles',
      'title': u'О плейбек театре', 

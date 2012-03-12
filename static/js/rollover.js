@@ -49,7 +49,10 @@ function init_rollovers() {
         }
     }
 
+    var announcements_href = "";
     for ( var href in objs ) {
+        if ( href.search(/announcements/) > -1 )
+            announcements_href = href;
         for ( var i = 0; i < objs[href].length; i++ ) {
             objs[href][i].onmouseover = 
                 make_images_changer(objs[href], "rollover_url");
@@ -57,6 +60,12 @@ function init_rollovers() {
                 make_images_changer(objs[href], "base_url");
         }
     }
+
+    announcements = document.getElementById("announcements")
+    announcements.onmouseover = 
+        make_images_changer(objs[announcements_href], "rollover_url");
+    announcements.onmouseout = 
+        make_images_changer(objs[announcements_href], "base_url");
 }
 
 if ( window.addEventListener )
