@@ -20,7 +20,7 @@ class TitledEntry(Entry):
         return self.title
 
 class Article(TitledEntry):
-    pass
+    author = models.CharField(u'Автор',max_length=50)
 
 from photologue.models import Photo
 class Actor(Photo):

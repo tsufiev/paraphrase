@@ -4,7 +4,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from paraphrase.views import show_section, show_gallery, show_photo, show_feedbacks
+from paraphrase.views import show_section, show_gallery, show_photo, show_feedbacks, show_article
 from sections.views import sections
 
 from django.shortcuts import redirect
@@ -12,6 +12,7 @@ from django.shortcuts import redirect
 urlpatterns = patterns(
     '',
     url(r'^$', show_section),
+    url(r'^articles/(?P<slug>[\-\d\w]+)/$', show_article),
     url(r'^actors/(?P<photo>[\-\d\w]+)/$', show_photo, name='actor'),
     url(r'^photos/gallery/(?P<gallery>[\-\d\w]+)/$', show_gallery, {'page': '1'}),
     url(r'^photos/gallery/(?P<gallery>[\-\d\w]+)/page/(?P<page>\d+)/$', show_gallery),

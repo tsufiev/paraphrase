@@ -5,7 +5,7 @@ from django.http import Http404, HttpResponseRedirect
 from photologue.models import Photo, Gallery
 
 from sections.views import find_section, get_section_ids
-from sections.models import Feedback
+from sections.models import Article, Feedback
 
 def show_section(request, 
                  section_id = 'home', 
@@ -50,6 +50,11 @@ def show_feedbacks(request):
     return show_section(request, 'feedbacks', context = {'form': form})
 
 from django.core.paginator import Paginator, EmptyPage
+
+def show_article(request, slug):
+    article = get_object_or_404(Article, title_slug=slug)
+    return show_section(request, 'articles', 'articles.html', {
+            'article': article})
 
 def show_photo(request, photo, gallery = None):
     photo = get_object_or_404(Photo, title_slug=photo)
