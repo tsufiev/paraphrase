@@ -3,10 +3,7 @@
 {% load markup %}
 {% block entry %}
 <div align="center">
-<iframe 
-   class="video" width="560" height="315"
-   src="http://www.youtube.com/embed/{{ entry.url|baselink }}"
-   frameborder="0" allowfullscreen></iframe>
+{{ entry.html|safe }}
 <p>{{ entry.text|textile }}</p>
 </div>
 {% endblock %}

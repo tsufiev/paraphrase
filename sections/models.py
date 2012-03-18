@@ -41,7 +41,7 @@ class Contact(Entry):
         return cut_text(self.text)
 
 class Video(Entry):
-    url = models.URLField()
+    html = models.TextField(u'HTML-код')
     def __unicode__(self):
         return cut_text(self.text)
 
