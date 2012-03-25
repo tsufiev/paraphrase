@@ -3,7 +3,7 @@
 {% for entry in entries.object_list %}
   <div class="gallery">
     <a href="{% url paraphrase.views.show_gallery gallery=entry.title_slug page=1 %}">
-      <img class="gallery" src="{{ entry.sample.0.get_gallery_url }}"/></a>
+      <img class="gallery" src="{{ entry.title_photo.get_gallery_url }}"/></a>
     <p class="gallery">{{ entry.title }}</p>
   </div>
 {% endfor %}
